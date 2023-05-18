@@ -25,7 +25,6 @@ function formatDate(timestamp) {
 
 function displayTemp(response) {
   console.log(response.data);
-
   let tempElement = document.querySelector("#temperature-digit");
   tempElement.innerHTML = Math.round(response.data.temperature.current);
 
@@ -34,6 +33,12 @@ function displayTemp(response) {
 
   let condElement = document.querySelector("#condition");
   condElement.innerHTML = response.data.condition.description;
+
+  let icon = document.querySelector("#main-img");
+  icon.setAttribute(
+    "src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+  );
 
   let feels = document.querySelector("#feel-like");
   feels.innerHTML = Math.round(response.data.temperature.feels_like);
@@ -49,5 +54,5 @@ function displayTemp(response) {
 }
 
 let apiKey = "ff3fdecoac088fb37da86107cat4578b";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=London&key=${apiKey}&units=metric`;
+let apiUrl = `https://api.shecodes.io/weather/v1/current?query=Los Angeles&key=${apiKey}&units=metric`;
 axios.get(apiUrl).then(displayTemp);
