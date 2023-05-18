@@ -11,6 +11,7 @@
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
       crossorigin="anonymous"
     />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <link rel="stylesheet" href="source/style.css" />
   </head>
   <body>
@@ -18,30 +19,28 @@
       <div class="weather-app-wrapper">
         <div class="weather-app">
           <div class="main-weather">
-            <h1>Oakland</h1>
+            <h1 id="city"></h1>
             <ul>
               <li>Monday 9:00</li>
-              <li>Clear</li>
+              <li id="condition"></li>
             </ul>
           </div>
           <div class="row">
             <div class="col-6">
               <div class="d-flex weather-temperature">
-                <img
-                  src="https://cdn-icons-png.flaticon.com/512/252/252035.png"
-                  alt="cloud-icon"
-                  width="75px"
-                />
-                <span class="temperature-digit"> 55</span>
-                <span class="temperature-unit">°C | <a href="#">F°</a></span>
+                <img id="main-img" />
+                <span class="temperature-digit" id="temperature-digit"></span>
+                <span class="temperature-unit" id="temperature-unit"
+                  >°C | <a href="#">F°</a></span
+                >
               </div>
             </div>
 
             <div class="col-6">
               <ul>
-                <li>Precipitation: 0%</li>
-                <li>Humidity: 0%</li>
-                <li>Wind: 0%</li>
+                <li>Feels Like: <span id="feel-like"></span>°</li>
+                <li>Humidity: <span id="humidity"></span>%</li>
+                <li>Wind: <span id="wind"> </span> km/h</li>
               </ul>
             </div>
           </div>

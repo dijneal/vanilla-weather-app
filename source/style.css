@@ -24,6 +24,9 @@ li {
   padding: 0;
 }
 
+#condition {
+  text-transform: capitalize;
+}
 .main-weather {
   margin-bottom: 20px;
 }
