@@ -24,7 +24,7 @@ li {
   padding: 0;
 }
 
-#condition {
+#condition:first-letter {
   text-transform: capitalize;
 }
 .main-weather {
