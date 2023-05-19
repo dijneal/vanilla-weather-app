@@ -1,9 +1,13 @@
 function formatDate(timestamp) {
   let date = new Date(timestamp);
+  let timeDay = "AM";
   let hour = date.getHours();
-  if (hour < 10) {
-    hour = `0${hours}`;
+
+  if (hour > 12) {
+    hour = `${hour}` - 12;
+    timeDay = "PM";
   }
+
   let minutes = date.getMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;
@@ -20,7 +24,7 @@ function formatDate(timestamp) {
   ];
   let day = days[date.getDay()];
 
-  return `${day} ${hour}:${minutes}`;
+  return `${day} ${hour}:${minutes} ${timeDay}`;
 }
 
 function displayTemp(response) {
@@ -54,5 +58,6 @@ function displayTemp(response) {
 }
 
 let apiKey = "ff3fdecoac088fb37da86107cat4578b";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=Los Angeles&key=${apiKey}&units=metric`;
+let city = "Texas";
+let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 axios.get(apiUrl).then(displayTemp);
