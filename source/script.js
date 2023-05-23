@@ -3,6 +3,11 @@ function formatDate(timestamp) {
   let timeDay = "AM";
   let hour = date.getHours();
 
+  if (hour > 12) {
+    hour = `${hour}` - 12;
+    timeDay = "PM";
+  }
+
   if (hour < 10) {
     hour = `0${hour}`;
   }
@@ -55,8 +60,17 @@ function displayTemp(response) {
   let date = document.querySelector("#date");
   date.innerHTML = formatDate(response.data.time * 1000);
 }
+function search(city) {
+  let apiKey = "ff3fdecoac088fb37da86107cat4578b";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemp);
+}
 
-let apiKey = "ff3fdecoac088fb37da86107cat4578b";
-let city = "Oakland";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-axios.get(apiUrl).then(displayTemp);
+function cityInput(event) {
+  event.preventDefault();
+  let enterCity = document.querySelector("#search-box");
+  search(enterCity.value);
+}
+
+let form = document.querySelector("#search-city");
+form.addEventListener("submit", cityInput);
