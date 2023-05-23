@@ -34,7 +34,9 @@ function formatDate(timestamp) {
 function displayTemp(response) {
   console.log(response.data);
   let tempElement = document.querySelector("#temperature-digit");
-  tempElement.innerHTML = Math.round(response.data.temperature.current);
+  tempElement.innerHTML = Math.round(
+    (response.data.temperature.current * 9) / 5 + 32
+  );
 
   let enterCity = document.querySelector("#city");
   enterCity.innerHTML = response.data.city;
