@@ -31,6 +31,24 @@ function formatDate(timestamp) {
   return `${day} ${hour}:${minutes} ${timeDay}`;
 }
 
+function showForecast() {
+  let forecast = document.querySelector("#forecast");
+  forecast.innerHTML = `
+  <div class="row">
+              <div class="col-2">
+                <div class="firstDate">Wed</div>
+                <img
+                  src="https://media.istockphoto.com/id/1297706369/vector/sun-paint-brush-strokes-on-white-background-vector-illustration.jpg?s=612x612&w=0&k=20&c=BvQi1mWNRrgaEJ5_AhOfs7OuXiCRb91-JJUI93LlAHg="
+                  alt=""
+                  width="40px"
+                />
+                <div class="firstWeather">
+                  <strong>67°</strong> <span class="minimumTemp">55°</span>
+                </div>
+              </div>
+            </div>`;
+}
+
 function displayTemp(response) {
   fahrenheitTemp = response.data.temperature.current;
   let tempElement = document.querySelector("#temperature-digit");
@@ -97,3 +115,5 @@ celsiusLink.addEventListener("click", showCelsiusTemp);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenheitTemp);
+
+showForecast();
