@@ -83,6 +83,8 @@ function showCelsiusTemp(event) {
 function showFahrenheitTemp(event) {
   event.preventDefault();
   let changeTemp = document.querySelector("#temperature-digit");
+  fahrenheitLink.classList.add("active");
+  celsiusLink.classList.remove("active");
   changeTemp.innerHTML = Math.round(fahrenheitTemp);
 }
 
