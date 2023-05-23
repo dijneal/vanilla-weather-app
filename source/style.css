@@ -74,3 +74,17 @@ ul {
 #search-box {
   margin-bottom: 20px;
 }
+
+.weather-temperature .active {
+  color: #272142;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.weather-temperature .active:hover {
+  cursor: default;
+}
+
+a {
+  text-decoration: none;
+}

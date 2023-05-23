@@ -32,11 +32,9 @@ function formatDate(timestamp) {
 }
 
 function displayTemp(response) {
-  console.log(response.data);
+  fahrenheitTemp = response.data.temperature.current;
   let tempElement = document.querySelector("#temperature-digit");
-  tempElement.innerHTML = Math.round(
-    (response.data.temperature.current * 9) / 5 + 32
-  );
+  tempElement.innerHTML = Math.round(fahrenheitTemp);
 
   let enterCity = document.querySelector("#city");
   enterCity.innerHTML = response.data.city;
@@ -64,7 +62,7 @@ function displayTemp(response) {
 }
 function search(city) {
   let apiKey = "ff3fdecoac088fb37da86107cat4578b";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayTemp);
 }
 
@@ -74,5 +72,28 @@ function cityInput(event) {
   search(enterCity.value);
 }
 
+function showCelsiusTemp(event) {
+  event.preventDefault();
+  let changeTemp = document.querySelector("#temperature-digit");
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+  changeTemp.innerHTML = Math.round((fahrenheitTemp - 32) * (5 / 9));
+}
+
+function showFahrenheitTemp(event) {
+  event.preventDefault();
+  let changeTemp = document.querySelector("#temperature-digit");
+  fahrenheitLink.classList.add("active");
+  celsiusLink.classList.remove("active");
+  changeTemp.innerHTML = Math.round(fahrenheitTemp);
+}
+
+let fahrenheitTemp = null;
 let form = document.querySelector("#search-city");
 form.addEventListener("submit", cityInput);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", showCelsiusTemp);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", showFahrenheitTemp);
