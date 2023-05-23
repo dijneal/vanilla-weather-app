@@ -3,9 +3,8 @@ function formatDate(timestamp) {
   let timeDay = "AM";
   let hour = date.getHours();
 
-  if (hour > 12) {
-    hour = `${hour}` - 12;
-    timeDay = "PM";
+  if (hour < 10) {
+    hour = `0${hour}`;
   }
 
   let minutes = date.getMinutes();
@@ -58,6 +57,6 @@ function displayTemp(response) {
 }
 
 let apiKey = "ff3fdecoac088fb37da86107cat4578b";
-let city = "Texas";
+let city = "Oakland";
 let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 axios.get(apiUrl).then(displayTemp);

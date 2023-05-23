@@ -63,3 +63,14 @@ ul {
   position: relative;
   font-size: 15px;
 }
+
+#search-bttn {
+  padding: 5px 15px;
+  width: 100;
+  border: 1px solid #272142;
+  border-radius: 5px;
+}
+
+#search-box {
+  margin-bottom: 20px;
+}
