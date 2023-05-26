@@ -31,12 +31,16 @@ function formatDate(timestamp) {
   return `${day} ${hour}:${minutes} ${timeDay}`;
 }
 
-function showForecast() {
+function showForecast(response) {
   let forecast = document.querySelector("#forecast");
-  forecast.innerHTML = `
-  <div class="row">
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
               <div class="col-2">
-                <div class="firstDate">Wed</div>
+                <div class="firstDate">${day}</div>
                 <img
                   src="https://media.istockphoto.com/id/1297706369/vector/sun-paint-brush-strokes-on-white-background-vector-illustration.jpg?s=612x612&w=0&k=20&c=BvQi1mWNRrgaEJ5_AhOfs7OuXiCRb91-JJUI93LlAHg="
                   alt=""
@@ -45,8 +49,12 @@ function showForecast() {
                 <div class="firstWeather">
                   <strong>67°</strong> <span class="minimumTemp">55°</span>
                 </div>
-              </div>
-            </div>`;
+              </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+
+  forecast.innerHTML = forecastHTML;
 }
 
 function displayTemp(response) {
@@ -77,7 +85,10 @@ function displayTemp(response) {
 
   let date = document.querySelector("#date");
   date.innerHTML = formatDate(response.data.time * 1000);
+
+  getCityForecast(response.data.coordinates);
 }
+
 function search(city) {
   let apiKey = "ff3fdecoac088fb37da86107cat4578b";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
@@ -115,5 +126,3 @@ celsiusLink.addEventListener("click", showCelsiusTemp);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenheitTemp);
-
-showForecast();
