@@ -57,6 +57,13 @@ function showForecast(response) {
   forecast.innerHTML = forecastHTML;
 }
 
+function getCityForecast(coordinates) {
+  let apiKey = "ff3fdecoac088fb37da86107cat4578b";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=imperial`;
+
+  axios.get(apiUrl).then(showForecast);
+}
+
 function displayTemp(response) {
   fahrenheitTemp = response.data.temperature.current;
   let tempElement = document.querySelector("#temperature-digit");
