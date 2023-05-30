@@ -32,6 +32,7 @@ function formatDate(timestamp) {
 }
 
 function showForecast(response) {
+  console.log(response.data.daily);
   let forecast = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
@@ -59,7 +60,7 @@ function showForecast(response) {
 
 function getCityForecast(coordinates) {
   let apiKey = "ff3fdecoac088fb37da86107cat4578b";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=imperial`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=imperial`;
 
   axios.get(apiUrl).then(showForecast);
 }
