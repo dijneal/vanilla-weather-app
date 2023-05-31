@@ -125,28 +125,8 @@ function cityInput(event) {
   search(enterCity.value);
 }
 
-function showCelsiusTemp(event) {
-  event.preventDefault();
-  let changeTemp = document.querySelector("#temperature-digit");
-  fahrenheitLink.classList.remove("active");
-  celsiusLink.classList.add("active");
-  changeTemp.innerHTML = Math.round((fahrenheitTemp - 32) * (5 / 9));
-}
-
-function showFahrenheitTemp(event) {
-  event.preventDefault();
-  let changeTemp = document.querySelector("#temperature-digit");
-  fahrenheitLink.classList.add("active");
-  celsiusLink.classList.remove("active");
-  changeTemp.innerHTML = Math.round(fahrenheitTemp);
-}
-
 let fahrenheitTemp = null;
 let form = document.querySelector("#search-city");
 form.addEventListener("submit", cityInput);
 
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", showCelsiusTemp);
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", showFahrenheitTemp);
+search("Oakland");
