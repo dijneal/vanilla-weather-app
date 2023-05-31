@@ -1,5 +1,6 @@
 a {
   text-decoration: none;
+  color: #774181;
 }
 
 body {
@@ -18,6 +19,11 @@ h1 {
   margin: 5px 0 10px;
 }
 
+input::placeholder {
+  color: #774181;
+  text-decoration-color: #774181;
+}
+
 li {
   color: #272142;
   font-weight: 500;
@@ -26,6 +32,10 @@ li {
   margin-bottom: 5px;
   margin: 0;
   padding: 0;
+}
+
+strong {
+  color: #272142;
 }
 
 ul {
@@ -60,6 +70,7 @@ ul {
   font-weight: 300;
   font-size: 64px;
   line-height: 60px;
+  color: #272142;
 }
 
 .temperature-unit {
@@ -68,7 +79,7 @@ ul {
 }
 
 .weather-app {
-  border: 1px solid #272142;
+  border: 1px solid #774181;
   border-radius: 5px;
   padding: 25px;
 }
@@ -107,4 +118,6 @@ ul {
   width: 100;
   border: 1px solid #272142;
   border-radius: 5px;
+  color: white;
+  background: #774181;
 }
